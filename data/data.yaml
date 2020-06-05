@@ -1,0 +1,49 @@
+#name: "lili" # 冒号必须是英文格式，每个冒号后面必须有一个空格
+#Name: "name" # 大小写敏感
+# 对象
+# 可以写入python字典类型数据当做某个yaml的key的值
+#data: {"name":"梦客","pwd":"123456"}
+
+# 左对齐元素,效果和上面一样，{'data1': {'name': 'mengke', 'pwd': '5637'}}
+#data1:
+#  name: "mengke"
+#  pwd: "5637"
+
+
+# ----数组-----
+
+# yaml文件-格式,打印为：{'data2': ['lili', 'naa']}
+#data2:
+#  - "lili"
+#  - "naa"
+
+# python-格式,{'datd3': ['123', '456']}
+#datd3: ["123","456"]
+
+# json格式,{'data4': [{'name': 'meng'}, {'pwd': '123'}]}
+#data4:
+#  - name: "meng"
+#  - pwd: "123"
+
+# 字符串——特殊情况，在工作中看到 自动转换一部分数据类
+#name: lili
+#
+## 布尔-yaml格式
+#bool1: true
+#bool2: false
+##布尔-python格式
+#bool3: True
+#bool4: False
+#
+##整数 浮点数
+#int1: 122
+#float1: 12.001
+
+# 锚点，打印结果为{'info': {'name': '梦客', 'phone': '133333'}, 'addr':
+  #            {'name': '梦客', 'phone': '133333', 'datail': '广西'}}
+info: &data # 标记锚点，这样下面的内容就会被复制一份
+  name: "梦客"
+  phone: "133333"
+addr:
+  <<: *data # 引用锚点，将name，和phone的值复制过来
+  datail: "广西"
